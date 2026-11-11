@@ -1,0 +1,222 @@
+<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LAB-VALIDEZ IA | RED CTII.AI</title>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mammoth@1.9.1/mammoth.browser.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/docx@9.5.1/dist/index.umd.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script><style>
+:root{--bg:#090a0c;--panel:#15171b;--card:#1d2025;--line:#35363a;--gold:#e2b967;--red:#de2632;--white:#f8f5ef;--muted:#b0aaa7;--green:#76c7a3}*{box-sizing:border-box}body{margin:0;font:15px/1.55 system-ui,Segoe UI,Arial;color:var(--white);background:var(--bg)}.layout{display:grid;grid-template-columns:266px 1fr;min-height:100vh}aside{background:#0d0d0e;border-right:1px solid #3b2529;padding:18px;position:sticky;top:0;height:100vh;overflow-y:auto}aside img{width:100%;max-width:210px;display:block;margin:4px auto 18px}.brand{text-align:center;font-weight:800;letter-spacing:1px;color:var(--gold);font-size:17px;margin-bottom:14px}nav button{display:block;background:transparent;border:0;border-radius:10px;width:100%;text-align:left;padding:11px 12px;color:#cfcac8;cursor:pointer;font-weight:600;margin:3px 0}nav button:hover,nav button.active{background:#3f2025;color:#fff}nav .sep{padding:13px 8px 3px;color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:2px}main{padding:32px clamp(20px,4vw,66px) 72px;max-width:1460px;width:100%;margin:auto}h1{font-size:clamp(27px,4vw,43px);line-height:1.1;margin:9px 0 16px}h2{font-size:23px;margin:0 0 13px}h3{color:var(--gold);font-size:16px}p{color:#ded9d3}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:3px;color:var(--gold)}.accent{color:var(--gold)}.subtitle{max-width:850px;color:#c7bfbb}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:22px;margin:18px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}.grid .card{margin:0}.stat{font-size:28px;font-weight:800;color:var(--gold)}button.primary,button.secondary,.mini{background:var(--red);color:white;border:0;border-radius:9px;padding:11px 17px;font-weight:700;cursor:pointer;margin:5px 5px 5px 0}.secondary,.mini{background:#37383d!important}.mini{padding:5px 9px}button:disabled{opacity:.4;cursor:not-allowed}input,textarea,select{background:#101114;color:var(--white);border:1px solid #5c5553;border-radius:8px;padding:10px;width:100%;font:inherit}textarea{min-height:85px}input[type=file]{padding:16px;border-style:dashed}.formrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:12px 0}label{font-size:13px;color:#e2d5c6;display:block;margin:4px 0}table{border-collapse:collapse;width:100%;font-size:13px;min-width:520px}th,td{padding:11px 10px;text-align:left;border-bottom:1px solid #37383d;vertical-align:top}th{color:var(--gold);background:#242020}.scroll{overflow:auto}.tag{display:inline-block;border:1px solid #866333;border-radius:999px;padding:3px 10px;color:var(--gold);font-size:12px}.notice{border-left:4px solid var(--gold);background:#292319;padding:12px 15px;border-radius:6px;margin:15px 0}.error{border-color:var(--red)!important;color:#ffadab}.ok{color:var(--green)}.hidden{display:none!important}.page{display:none}.page.on{display:block}footer{border-top:1px solid #4f3335;color:#c4aaa0;margin-top:45px;padding-top:18px;font-size:12px}.steps{display:flex;gap:8px;flex-wrap:wrap}.steps span{border:1px solid #5c4641;border-radius:8px;padding:7px 10px;font-size:12px}code,pre{background:#111;padding:3px;color:#f1c989;white-space:pre-wrap}pre{padding:16px;border-radius:10px}.btnrow{display:flex;flex-wrap:wrap;gap:7px}.qa{border-bottom:1px solid #404045;padding:12px 0}#toast{position:fixed;right:20px;bottom:25px;background:#47251b;border:1px solid var(--gold);padding:12px 17px;border-radius:9px;max-width:460px;display:none;z-index:50}a{color:var(--gold)}@media(max-width:800px){.layout{grid-template-columns:1fr}aside{position:relative;height:auto}nav{display:grid;grid-template-columns:repeat(2,1fr)}nav .sep{grid-column:1/-1}main{padding:24px 15px}}
+</style></head><body><div class="layout"><aside><img src="assets/logo.png" alt="Logotipo oficial RED CTII.AI"><div class="brand">LAB-VALIDEZ IA · V1.0</div><nav id="nav"></nav></aside><main><div class="eyebrow">RED CTII.AI / Laboratorio inteligente de validez de instrumentos</div><div id="content"></div><footer>© 2026 <strong>Prof. Dr. Pablo José Guerrero, PhD.</strong> · Autor y desarrollador intelectual · Todos los derechos reservados.<br>RED CTII.AI · Ciencia, Tecnología, Innovación, Investigación e IA · <a href="https://guerrero-consultores.com/" target="_blank" rel="noreferrer">Guerrero Consultores</a><br><small>Base teórica: Sánchez Espejo (2020), <em>Estadística para tesis y uso del SPSS</em>, capítulo 4. No se considera una validación real sin dictámenes auténticos de expertos.</small></footer></main></div><div id="toast" role="status"></div>
+<script>
+const PAGES=[['Inicio','Inicio'],['Fundamentos','01 · Fundamentos'],['Juicio','02 · Juicio de expertos'],['Aiken','03 · V de Aiken'],['Lawshe','04 · Lawshe'],['Binomial','05 · Prueba binomial'],['Kappa','06 · Kappa de Cohen'],['Factorial','07 · Estructura interna'],['Carga','08 · Cargar documentos'],['Diagnostico','09 · Diagnóstico'],['Ficha','10 · Ficha para expertos'],['Datos','11 · Procesar valoraciones'],['Informe','12 · Informe final'],['Citar','13 · Cómo citar']];
+const seed=[{id:'E-1',indicator:'Plan instruccional',question:'¿Qué procedimiento se sigue para orientar, revisar y aprobar los planes instruccionales de los módulos virtuales?'},{id:'E-2',indicator:'Alineación competencias–resultados–evaluación',question:'¿Mediante qué procedimientos e instrumentos se verifica que las actividades de evaluación correspondan a las competencias profesionalizantes y a los resultados de aprendizaje previstos?'},{id:'E-3',indicator:'Metodologías activas y materiales pedagógicos',question:'¿Qué criterios se utilizan para seleccionar metodologías activas y materiales que permitan aplicar lo aprendido en situaciones profesionales?'},{id:'E-4',indicator:'Coherencia curricular',question:'¿Cómo se revisa y ajusta la secuencia y articulación de los módulos de las maestrías profesionalizantes para favorecer el desarrollo progresivo de las competencias del perfil de egreso?'}];
+let state={page:'Inicio',items:structuredClone(seed),actual:false,categories:'',method:'aiken',results:[],rows:[],uploadedNames:[],reportNotes:'',lastResponse:null};
+const $=s=>document.querySelector(s),esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),val=id=>$('#'+id)?.value??'',fmt=x=>(Math.round(x*10000)/10000).toLocaleString('es-BO');
+function toast(t){let e=$('#toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',6000)}
+function page(id){state.page=id;document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.p===id));render();window.scrollTo(0,0)}
+function copyCitation(id){const el=document.getElementById(id);if(el)navigator.clipboard.writeText(el.innerText).then(()=>toast('Referencia copiada')).catch(()=>toast('Selecciona el texto y cópialo manualmente'))}
+function init(){let nav=$('#nav');PAGES.forEach(([id,title],i)=>{if(i===1||i===8)nav.insertAdjacentHTML('beforeend',`<div class="sep">${i===1?'Aprendizaje y simuladores':'Validación real'}</div>`);let b=document.createElement('button');b.textContent=title;b.dataset.p=id;b.onclick=()=>page(id);nav.append(b)});page('Inicio')}
+const head=(title,sub)=>`<h1>${title}</h1><p class="subtitle">${sub}</p>`;
+const card=(title,body)=>`<div class="card"><h2>${title}</h2>${body}</div>`;
+const follow=(next)=>`<div class="btnrow"><button class="primary" onclick="page('${next}')">Continuar → ${next}</button></div>`;
+function render(){let h='';switch(state.page){
+case 'Inicio':h=head('LAB-VALIDEZ <span class="accent">IA</span>','Laboratorio de acceso directo: funciona desde el navegador, sin instalar Python. Los documentos y las valoraciones permanecen en el equipo del participante.')+`<div class="grid"><div class="card"><div class="stat">07</div><h3>Fundamentos y métodos</h3><p>Teoría, ecuaciones, simuladores y condiciones de uso.</p><button class="primary" onclick="page('Fundamentos')">Explorar laboratorio</button></div><div class="card"><div class="stat">05</div><h3>Etapas de validación real</h3><p>Documentos → diagnóstico → fichas → datos → informe.</p><button class="primary" onclick="page('Carga')">Iniciar validación real</button></div></div>`+card('Caso de referencia',`<p>Entrevista semiestructurada a responsables de posgrado sobre procesos formativos y evaluación en EVA. Los cuatro ítems E-1 a E-4 se encuentran precargados <strong>solo como demostración</strong>.</p><span class="tag">Modo de demostración</span> <span class="tag">Cálculos verificables</span> <span class="tag">Exportaciones DOCX / PDF / CSV</span><span class="tag">Sin instalaciones</span>`);break;
+case 'Fundamentos':h=head('01 · Fundamentos de validez','La validez requiere evidencia para sustentar la interpretación y uso de la información recogida.')+card('Validez de contenido',`<p>Examina la pertinencia, relevancia, claridad y suficiencia de las preguntas respecto de los objetivos, categorías, dimensiones e indicadores. La vía principal para entrevistas abiertas es el juicio de expertos.</p><div class="notice">Distinguir tres conceptos: <strong>validez de contenido</strong>, <strong>concordancia entre evaluadores</strong> y <strong>estructura interna de una escala</strong>. No son sinónimos.</div>`)+card('Reglas metodológicas',`<p><strong>V de Aiken:</strong> escalas ordinales de jueces. <strong>Lawshe:</strong> esencialidad. <strong>Binomial:</strong> aprobación dicotómica e hipótesis probabilística declarada. <strong>Kappa:</strong> acuerdo entre dos jueces. <strong>KMO/Bartlett:</strong> adecuación de una matriz cuantitativa para análisis factorial.</p>`)+follow('Juicio');break;
+case 'Juicio':h=head('02 · Juicio de expertos','Procedimiento central de evaluación de contenido para entrevistas semiestructuradas.')+card('Procedimiento',`<ol><li>Preparar entrevista, objetivo y cuadro de categorización.</li><li>Seleccionar expertos por experiencia metodológica y temática.</li><li>Solicitar evaluación individual por pregunta, más evaluación de suficiencia por componente.</li><li>Registrar observaciones, revisar y documentar los cambios.</li><li>Aplicar una prueba piloto de comprensión y flujo.</li></ol><div class="notice">La opinión de los expertos constituye evidencia de contenido, pero no prueba por sí sola la validez global de los resultados de investigación.</div>`)+follow('Aiken');break;
+case 'Aiken':h=head('03 · V de Aiken','Cuantifica evaluaciones ordinales de pertinencia, claridad o relevancia realizadas por expertos.')+card('Fundamento y fórmula',`<p><strong>V = Σ(rᵢ − l) / [n(c − 1)]</strong>. rᵢ: puntuación; l: mínimo de la escala; n: número de jueces; c: cantidad de categorías.</p><div class="formrow"><div><label>Calificaciones (separadas por comas)</label><input id="aikenValues" value="5,5,4,5,4"></div><div><label>Mínimo</label><input type="number" id="aikenLow" value="1"></div><div><label>Máximo</label><input type="number" id="aikenHigh" value="5"></div></div><button class="primary" onclick="calcAiken()">Calcular V</button><div id="aikenOut" class="notice">Ejemplo: cinco jueces, ítem E-1.</div>`)+follow('Lawshe');break;
+case 'Lawshe':h=head('04 · Razón de validez de contenido de Lawshe','Identifica preguntas consideradas esenciales por los expertos.')+card('Fundamento y cálculo',`<p><strong>CVR = (nₑ − N/2)/(N/2)</strong>. La prueba requiere codificar esencial / útil-no esencial / no necesaria.</p><div class="formrow"><div><label>Número de expertos</label><input id="lawN" type="number" min="1" value="10"></div><div><label>Consideran esencial</label><input id="lawK" type="number" min="0" value="9"></div></div><button class="primary" onclick="calcLawshe()">Calcular CVR</button><div id="lawOut" class="notice">Ejemplo: E-2, 9 de 10 jueces consideran la pregunta esencial.</div><p>La interpretación debe usar un valor crítico apropiado para N y el procedimiento adoptado. No imponer un umbral único a todo tamaño de panel.</p>`)+follow('Binomial');break;
+case 'Binomial':h=head('05 · Prueba binomial exacta','Contrasta el número de evaluaciones favorables con la probabilidad hipotética p₀.')+card('Fundamento y cálculo',`<div class="formrow"><div><label>Expertos totales</label><input id="binN" type="number" min="1" value="10"></div><div><label>Favorables</label><input id="binK" type="number" min="0" value="9"></div><div><label>Proporción nula p₀</label><input id="binP" type="number" min="0.01" max="0.99" step="0.01" value="0.50"></div></div><button class="primary" onclick="calcBinomial()">Calcular p exacto</button><div class="notice" id="binOut">H₀: p = p₀, H₁: p &gt; p₀. Un porcentaje de aprobación no equivale al p-valor.</div>`)+follow('Kappa');break;
+case 'Kappa':h=head('06 · Kappa de Cohen','Mide la concordancia entre dos jueces para las mismas unidades de evaluación.')+card('Fundamento y cálculo',`<p><strong>κ = (Pₒ − Pₑ)/(1 − Pₑ)</strong>. Admite categorías textuales coincidentes. Introduce una evaluación por unidad y separa por comas.</p><label>Juez 1</label><input id="kapA" value="si,si,si,no,no,si,no,no"><label>Juez 2</label><input id="kapB" value="si,si,no,no,no,si,si,no"><button class="primary" onclick="calcKappa()">Calcular concordancia</button><div class="notice" id="kapOut">Ejemplo: dos expertos evalúan ocho unidades.</div>`)+follow('Factorial');break;
+case 'Factorial':h=head('07 · Análisis de estructura interna','KMO, Bartlett, comunalidades y análisis factorial se utilizan para escalas cuantitativas, no para una guía abierta de entrevista sin datos apropiados.')+card('Condiciones para aplicar análisis factorial',`<p><strong>KMO:</strong> evalúa la adecuación muestral a partir de correlaciones y correlaciones parciales. <strong>Bartlett:</strong> examina si la matriz de correlaciones difiere de la identidad. <strong>Comunalidades:</strong> varianza compartida/explicada de las variables en un modelo factorial.</p><div class="notice"><strong>Bloqueo metodológico:</strong> para los cuatro ítems abiertos E-1 a E-4, no se calculará KMO ni Bartlett. Si necesitas analizar una escala estructurada de puntuaciones, debe abrirse un proyecto de otro tipo con un número suficiente de observaciones y supuestos verificados.</div>`)+follow('Carga');break;
+case 'Carga':h=head('08 · Carga de instrumentos reales','Carga dos documentos, comprueba el texto extraído y revisa manualmente los ítems. Los archivos se procesan localmente en tu navegador; no se envían a un servidor de análisis.')+card('Documentos obligatorios',`<div class="formrow"><div><label>1. Entrevista (PDF, DOCX, TXT)</label><input id="instrumentFile" type="file" accept=".pdf,.docx,.txt"></div><div><label>2. Cuadro de categorización (PDF, DOCX, TXT, CSV)</label><input id="categoriesFile" type="file" accept=".pdf,.docx,.txt,.csv,.xlsx"></div></div><button class="primary" onclick="parseDocuments()">Analizar ambos documentos</button><div id="parseStatus" class="notice">La lectura se ejecuta localmente (requiere bibliotecas web para PDF/DOCX/XLSX). Si un PDF está escaneado sin capa de texto, debe transcribirse u obtenerse mediante OCR previamente.</div>`)+card('Preguntas reconocidas y edición humana',`<div id="itemEditor"></div><h3>Texto del cuadro de categorización</h3><p>Revisa que las preguntas e indicadores coincidan con la matriz. Puedes corregir esta transcripción aquí.</p><textarea id="categoriesReview" rows="8" oninput="state.categories=this.value">${esc(state.categories)}</textarea><button class="secondary" onclick="addItem()">+ Añadir pregunta</button><button class="primary" onclick="saveItems()">Guardar preguntas revisadas</button>`)+follow('Diagnostico');break;
+case 'Diagnostico':h=head('09 · Diagnóstico metodológico','La selección se fundamenta en el tipo de entrevista y la codificación de las valoraciones de los expertos.')+card('Dictamen del sistema',`<p><span class="tag">${state.actual?'Documentos de usuario procesados':'Modo demostración: faltan documentos reales'}</span></p><p>Se reconocen <strong>${state.items.length} preguntas</strong>. Se recomienda <strong>juicio de expertos + V de Aiken</strong> (valoraciones de 1 a 5) como procedimiento principal. Como alternativas complementarias: Lawshe si se consulta esencialidad; prueba binomial si se usa juicio dicotómico; Kappa para concordancia de dos jueces.</p><div class="notice">La matriz de categorización debe confirmarse antes de aplicar el instrumento. No se realizará análisis factorial de respuestas narrativas.</div><label>Procedimiento de cuantificación seleccionado</label><select id="methodSel" onchange="state.method=this.value"><option value="aiken" ${state.method==='aiken'?'selected':''}>V de Aiken (principal)</option><option value="lawshe" ${state.method==='lawshe'?'selected':''}>Lawshe (esencialidad)</option><option value="binomial" ${state.method==='binomial'?'selected':''}>Prueba binomial (sí/no)</option></select>`)+follow('Ficha');break;
+case 'Ficha':h=head('10 · Generación de fichas para expertos','Descarga el instrumento que aplicarán los especialistas; conserva la matriz por pregunta, indicador y criterio.')+card('Configuración del juicio',`<div class="formrow"><div><label>Número de expertos (referencial)</label><input type="number" min="1" value="5" id="nExperts"></div><div><label>Criterios de evaluación</label><select id="criteriaSel"><option>Claridad,Pertinencia,Relevancia</option><option>Pertinencia</option><option>Claridad,Pertinencia,Relevancia,Suficiencia</option></select></div></div><button class="primary" onclick="downloadTemplate()">Descargar ficha CSV para expertos</button><button class="secondary" onclick="downloadFichaWord()">Descargar ficha Word</button><p>Para V de Aiken, la ficha ofrece escala 1–5. Para Lawshe, utilizar «esencial», «útil» o «no necesaria»; para binomial «sí» / «no». La suficiencia se recomienda valorar por dimensión o en forma global.</p>`)+card('Preguntas incluidas',tableItems())+follow('Datos');break;
+case 'Datos':h=head('11 · Procesamiento real de resultados','Importa el archivo CSV o XLSX de evaluaciones de expertos. Formato requerido: item,criterion,expert,value. El sistema detecta duplicados, registros incompletos y puntuaciones fuera de escala. Los cálculos se ejecutan localmente.')+card('Carga de valoraciones',`<label>Base de datos de expertos · CSV o XLSX</label><input type="file" accept=".csv,.txt,.xlsx" id="ratingsFile"><div class="formrow"><div><label>Método</label><select id="processMethod"><option value="aiken">V de Aiken</option><option value="lawshe">Lawshe</option><option value="binomial">Prueba binomial</option></select></div><div><label>Probabilidad nula binomial (p₀)</label><input id="p0" type="number" min=".01" max=".99" step=".01" value="0.5"></div></div><button class="primary" onclick="processRatings()">Verificar y calcular</button><button class="secondary" onclick="downloadDemo()">Descargar ejemplo de prueba (datos simulados)</button><div class="notice" id="processStatus">Solo se emitirán conclusiones sobre datos que se hayan procesado. Los ejemplos simulados se identifican explícitamente.</div>`)+card('Resultados por ítem y criterio',`<div class="scroll" id="resultsTable">Todavía no se ha procesado una base de valoraciones.</div>`)+follow('Informe');break;
+case 'Citar':h=head('13 · Cómo citar LAB-VALIDEZ IA','Referencias para investigadores que empleen el software. Puedes copiar el formato requerido por tu institución.')+card('Autoría y referencia del software',`<p>Autor: <b>Pablo José Guerrero</b> · Año: <b>2026</b> · Versión: <b>1.0</b>.</p><p>Referencia del código fuente: <a href="https://github.com/pablojoseguerrero/LAB-VALIDEZ-IA_V01" target="_blank" rel="noopener">GitHub · rama LAB-VALIDEZ IA</a>. Este es el repositorio del código; no es un sitio web desplegado.</p><div class="notice">Cita el software cuando lo uses para procesar o validar instrumentos. Cita también las fuentes metodológicas originales que fundamentan cada técnica estadística.</div>`)+card('APA, IEEE y Vancouver',`<div class="qa"><h3>APA 7.ª edición</h3><p id="citeapa7">Guerrero, P. J. (2026). <i>LAB-VALIDEZ IA</i> (Versión 1.0) [Software]. RED CTII.AI. https://github.com/pablojoseguerrero/LAB-VALIDEZ-IA_V01</p><button class="secondary" onclick="copyCitation('citeapa7')">Copiar APA 7</button></div><div class="qa"><h3>APA 6.ª edición</h3><p id="citeapa6">Guerrero, P. J. (2026). <i>LAB-VALIDEZ IA</i> (Versión 1.0) [Programa informático]. RED CTII.AI. Recuperado de https://github.com/pablojoseguerrero/LAB-VALIDEZ-IA_V01</p><button class="secondary" onclick="copyCitation('citeapa6')">Copiar APA 6</button></div><div class="qa"><h3>IEEE</h3><p id="citeieee">[1] P. J. Guerrero, <i>LAB-VALIDEZ IA</i>, ver. 1.0, RED CTII.AI, 2026. [En línea]. Disponible en: https://github.com/pablojoseguerrero/LAB-VALIDEZ-IA_V01</p><button class="secondary" onclick="copyCitation('citeieee')">Copiar IEEE</button></div><div class="qa"><h3>Vancouver</h3><p id="citevancouver">Guerrero PJ. LAB-VALIDEZ IA [Internet]. Versión 1.0. RED CTII.AI; 2026 [citado el día mes año]. Disponible en: https://github.com/pablojoseguerrero/LAB-VALIDEZ-IA_V01</p><button class="secondary" onclick="copyCitation('citevancouver')">Copiar Vancouver</button></div>`);break;
+case 'Informe':h=head('12 · Informe científico de validez','El informe refleja únicamente los datos cargados y los métodos realmente ejecutados.')+card('Informe y decisiones',`<p><strong>Estado:</strong> ${state.results.length?'Base procesada; informe listo para exportar.':'No hay resultados procesados; solo puede generarse un documento preliminar.'}</p><label>Interpretaciones, decisiones y observaciones del investigador</label><textarea id="notes" placeholder="Por ejemplo: reformular E-3 por observaciones de los jueces...">${esc(state.reportNotes)}</textarea><div class="btnrow"><button class="primary" onclick="exportReport('docx')">Descargar informe Word</button><button class="primary" onclick="exportReport('pdf')">Descargar informe PDF</button><button class="secondary" onclick="downloadResults()">Descargar resultados CSV</button></div>`)+card('Resumen de resultados',`<div class="scroll">${renderResults()}</div>`)+card('Limitaciones y transparencia',`<p>Los coeficientes describen resultados de evaluaciones: su interpretación debe considerar escala, número de especialistas y criterios definidos antes de la valoración. La plataforma no declara «validación certificada» ni fabrica dictámenes.</p>`);break;
+}
+$('#content').innerHTML=h;if(state.page==='Carga')renderEditor();if(state.page==='Datos'){$('#processMethod').value=state.method;$('#resultsTable').innerHTML=renderResults()};}
+function tableItems(){return '<div class="scroll"><table><tr><th>Ítem</th><th>Indicador</th><th>Pregunta</th></tr>'+state.items.map(x=>`<tr><td>${esc(x.id)}</td><td>${esc(x.indicator)}</td><td>${esc(x.question)}</td></tr>`).join('')+'</table></div>'}
+function renderEditor(){$('#itemEditor').innerHTML=state.items.map((x,i)=>`<div class="qa"><div class="formrow"><div><label>Código</label><input class="item-id" data-i="${i}" value="${esc(x.id)}"></div><div><label>Indicador</label><input class="item-ind" data-i="${i}" value="${esc(x.indicator)}"></div></div><label>Pregunta</label><textarea class="item-q" data-i="${i}">${esc(x.question)}</textarea><button class="mini" onclick="removeItem(${i})">Eliminar ítem</button></div>`).join('')}
+function saveItems(){let ids=[...document.querySelectorAll('.item-id')].map(x=>x.value.trim());if(ids.some(x=>!x)||new Set(ids).size!==ids.length){toast('Los códigos deben ser únicos y no vacíos');return false}state.items=ids.map((id,i)=>({id,indicator:document.querySelectorAll('.item-ind')[i].value.trim(),question:document.querySelectorAll('.item-q')[i].value.trim()}));if(state.items.some(x=>!x.indicator||!x.question)){toast('Completa las preguntas e indicadores');return false}toast('Preguntas guardadas y revisadas');return true}
+function addItem(){saveItems();state.items.push({id:'E-'+(state.items.length+1),indicator:'Por definir',question:'¿Pregunta nueva?'});renderEditor()}
+function removeItem(i){saveItems();state.items.splice(i,1);renderEditor()}
+async function readDocument(file){
+  const ext=file.name.split('.').pop().toLowerCase(), size=file.size;
+  if(size>12*1024*1024)throw Error('Archivo mayor a 12 MB: '+file.name);
+  if(ext==='txt'||ext==='csv')return await file.text();
+  if(ext==='xlsx'){
+    if(!window.XLSX)throw Error('No cargó el lector XLSX. Comprueba la conexión a internet o guarda como CSV.');
+    const wb=XLSX.read(await file.arrayBuffer(),{type:'array'});
+    return XLSX.utils.sheet_to_csv(wb.Sheets[wb.SheetNames[0]]);
+  }
+  if(ext==='docx'){
+    if(!window.mammoth)throw Error('No cargó el lector Word. Comprueba tu conexión o utiliza TXT.');
+    const result=await mammoth.extractRawText({arrayBuffer:await file.arrayBuffer()});return result.value;
+  }
+  if(ext==='pdf'){
+    if(!window.pdfjsLib)throw Error('No cargó el lector PDF. Comprueba tu conexión o utiliza TXT.');
+    pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;
+    let out=[];
+    for(let p=1;p<=pdf.numPages;p++){
+      const page=await pdf.getPage(p),tc=await page.getTextContent();
+      // Preservar saltos de línea para facilitar la detección de preguntas.
+      let line='',lastY=null;
+      for(const item of tc.items){const y=item.transform?.[5];if(lastY!==null&&Math.abs(y-lastY)>5){out.push(line);line='';}line+=(line?' ':'')+(item.str||'');lastY=y;}
+      if(line)out.push(line);
+      out.push('');
+    }
+    return out.join('\n');
+  }
+  throw Error('Formato no admitido: '+ext);
+}
+function detectInterviewItems(text){
+  let matches=[...text.matchAll(/\b(E\s*[-–]\s*\d+)\b/gi)];let found=[];
+  matches.forEach((m,i)=>{
+    const code=m[1].replace(/\s/g,'').replace('–','-').toUpperCase();
+    const chunk=text.slice(m.index+m[0].length,i+1<matches.length?matches[i+1].index:undefined);
+    const q=chunk.match(/¿[\s\S]{10,900}?\?/);
+    if(q&&!found.some(x=>x.id===code))found.push({id:code,indicator:'Por confirmar con matriz',question:q[0].replace(/\s+/g,' ').trim()});
+  });
+  if(!found.length){
+    const qs=[...text.matchAll(/¿[^?]{12,800}\?/g)];found=qs.slice(0,100).map((m,i)=>({id:'E-'+(i+1),indicator:'Por confirmar con matriz',question:m[0].replace(/\s+/g,' ')}));
+  }
+  return found;
+}
+async function parseDocuments(){
+ const a=$('#instrumentFile').files[0],b=$('#categoriesFile').files[0];
+ if(!a||!b){toast('Debes cargar ambos documentos');return}
+ $('#parseStatus').textContent='Analizando en tu navegador...';
+ try{
+  const instrument=await readDocument(a),categories=await readDocument(b);
+  if(!instrument.trim()||!categories.trim())throw Error('No se pudo extraer texto de uno de los documentos. Si es un PDF escaneado, convierte primero con OCR.');
+  const items=detectInterviewItems(instrument);
+  state.actual=true;state.uploadedNames=[a.name,b.name];state.categories=categories.slice(0,100000);
+  if(items.length)state.items=items;
+  renderEditor();$('#categoriesReview').value=state.categories;
+  $('#parseStatus').textContent=`Extracción local terminada: ${items.length} preguntas detectadas; ${categories.length} caracteres de categorización. Revisa y corrige los indicadores y preguntas antes de continuar.`;
+  toast('Documentos leídos localmente. Revisa los ítems y guarda los cambios.');
+ }catch(e){$('#parseStatus').textContent='No se procesó: '+e.message;toast(e.message)}
+}
+function csvEncode(a){return a.map(row=>row.map(v=>'"'+String(v??'').replaceAll('"','""')+'"').join(',')).join('\r\n')}
+function download(content,filename,type='text/csv;charset=utf-8'){let b=new Blob(['\ufeff',content],{type}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+function downloadTemplate(){let n=Number(val('nExperts'));if(!Number.isInteger(n)||n<1||n>100){toast('Número de expertos inválido');return}let criteria=val('criteriaSel').split(','), rows=[['item','criterion','expert','value']];for(const x of state.items)for(const c of criteria)for(let i=1;i<=n;i++)rows.push([x.id,c,'J-'+i,'']);download(csvEncode(rows),'plantilla_valoraciones_expertos.csv');toast('Plantilla generada; completa los valores antes de procesarla')}
+function readCSV(text){let rows=[],cur=[],cell='',quote=false;for(let i=0;i<text.length;i++){let c=text[i];if(c==='"'){if(quote&&text[i+1]==='"'){cell+='"';i++}else quote=!quote}else if(c===','&&!quote){cur.push(cell);cell=''}else if((c==='\r'||c==='\n')&&!quote){if(c==='\r'&&text[i+1]==='\n')i++;cur.push(cell);if(cur.some(x=>x.trim()))rows.push(cur);cur=[];cell=''}else cell+=c}cur.push(cell);if(cur.some(x=>x.trim()))rows.push(cur);if(!rows.length)throw Error('CSV vacío');let keys=rows.shift().map(x=>x.trim().replace(/^\ufeff/,''));for(let k of ['item','criterion','expert','value'])if(!keys.includes(k))throw Error('Falta columna '+k);return rows.map(r=>Object.fromEntries(keys.map((k,i)=>[k,(r[i]||'').trim()])))}
+function logBinom(n,k,p){
+ if(k<0||k>n)return -Infinity;
+ let lc=0;for(let j=1;j<=k;j++)lc+=Math.log(n-k+j)-Math.log(j);
+ return lc+k*Math.log(p)+(n-k)*Math.log1p(-p);
+}
+function binomExactGreater(k,n,p){
+ let vals=[];for(let j=k;j<=n;j++)vals.push(logBinom(n,j,p));
+ let m=Math.max(...vals);return Math.min(1,Math.exp(m)*vals.reduce((s,x)=>s+Math.exp(x-m),0));
+}
+function aikenLocal(values,low=1,high=5){
+ const v=values.map(Number);if(!v.length||low>=high||v.some(x=>!Number.isInteger(x)||x<low||x>high))throw Error('Aiken: evaluaciones no enteras o fuera de escala');
+ return Math.round(10000*v.reduce((s,x)=>s+x-low,0)/(v.length*(high-low)))/10000;
+}
+function lawsheLocal(values){
+ const positives=new Set(['esencial','1','sí','si','true']);const allowed=new Set([...positives,'útil','util','no necesaria','no necesario','0','2','3']);
+ if(values.some(x=>!allowed.has(String(x).toLowerCase().trim())))throw Error('Lawshe: utiliza esencial, útil o no necesaria');
+ const k=values.filter(x=>positives.has(String(x).toLowerCase().trim())).length;
+ return Math.round((2*k/values.length-1)*10000)/10000;
+}
+function binomialLocal(values,p0=.5){
+ if(!(p0>0&&p0<1))throw Error('p₀ debe estar entre 0 y 1');
+ const yes=new Set(['sí','si','1','true','aprobado']),no=new Set(['no','0','false','rechazado']);
+ if(values.some(v=>!yes.has(String(v).toLowerCase().trim())&&!no.has(String(v).toLowerCase().trim())))throw Error('Binomial: utiliza solamente sí o no');
+ const k=values.filter(v=>yes.has(String(v).toLowerCase().trim())).length,n=values.length;
+ return {favorables:k,total:n,proporcion:Math.round(k/n*10000)/10000,p_value:Math.round(binomExactGreater(k,n,p0)*1e6)/1e6,hipotesis_nula:p0,alternativa:'greater'};
+}
+function kappaLocal(a,b){
+ if(!a.length||a.length!==b.length)throw Error('Los jueces deben evaluar las mismas unidades');
+ a=a.map(x=>String(x).trim().toLowerCase());b=b.map(x=>String(x).trim().toLowerCase());
+ const n=a.length,po=a.filter((x,i)=>x===b[i]).length/n;
+ const ca={},cb={};a.forEach(x=>ca[x]=(ca[x]||0)+1);b.forEach(x=>cb[x]=(cb[x]||0)+1);
+ const pe=Object.keys({...ca,...cb}).reduce((s,k)=>s+(ca[k]||0)*(cb[k]||0),0)/n**2;
+ return {kappa:pe===1?(po===1?1:null):Math.round((po-pe)/(1-pe)*10000)/10000,acuerdo_observado:Math.round(po*10000)/10000,acuerdo_azar:Math.round(pe*10000)/10000,unidades:n};
+}
+function analyzeLocal(rows,method='aiken',p0=.5){
+ if(!rows.length)throw Error('La base de datos está vacía');
+ let groups={};for(const r of rows){
+  const item=String(r.item||'').trim(),criterion=String(r.criterion||'').trim(),expert=String(r.expert||'').trim(),value=String(r.value||'').trim();
+  if(!item||!criterion||!expert||!value)throw Error('Todas las filas necesitan item, criterion, expert y value');
+  const key=item+'\u0001'+criterion;groups[key]??={};if(Object.hasOwn(groups[key],expert))throw Error('Valoración duplicada: '+item+', '+criterion+', '+expert);
+  groups[key][expert]=value;
+ }
+ let results=[];for(const key of Object.keys(groups).sort()){
+  const [item,criterion]=key.split('\u0001'),values=Object.values(groups[key]);let obj;
+  if(method==='aiken')obj={v_aiken:aikenLocal(values)};
+  else if(method==='lawshe')obj={cvr:lawsheLocal(values)};
+  else if(method==='binomial')obj=binomialLocal(values,p0);
+  else throw Error('Método no disponible');
+  results.push({item,criterion,n_experts:values.length,...obj});
+ }
+ return {method,results,total_rows:rows.length,warning:'La validez de contenido no implica una validez global automática.'};
+}
+async function processRatings(){
+ const f=$('#ratingsFile').files[0];if(!f){toast('Carga un CSV o XLSX de valoraciones');return}
+ try{
+  let text=await readDocument(f),rows=readCSV(text),method=val('processMethod'),p0=Number(val('p0'));
+  const d=analyzeLocal(rows,method,p0);
+  state.method=method;state.rows=rows;state.results=d.results;state.lastResponse=d;
+  $('#resultsTable').innerHTML=renderResults();
+  $('#processStatus').textContent=`Procesamiento local correcto. ${rows.length} valoraciones y ${d.results.length} resultados por ítem/criterio.`;
+  toast('Cálculos terminados en tu navegador');
+ }catch(e){$('#processStatus').textContent='No se procesó: '+e.message;toast(e.message)}
+}
+function renderResults(){if(!state.results.length)return '<p>Sin resultados; carga datos y calcula en la página 11.</p>';let keys=Object.keys(state.results[0]);return `<table><tr>${keys.map(k=>`<th>${esc(k)}</th>`).join('')}</tr>${state.results.map(r=>`<tr>${keys.map(k=>`<td>${esc(typeof r[k]==='number'?fmt(r[k]):r[k])}</td>`).join('')}</tr>`).join('')}</table>`}
+function downloadResults(){if(!state.results.length){toast('No existen resultados para exportar');return}let cols=Object.keys(state.results[0]);download(csvEncode([cols,...state.results.map(r=>cols.map(c=>r[c]))]),'resultados_validez.csv')}
+function downloadDemo(){let rows=[['item','criterion','expert','value']];const scores=[[5,5,4,5,4],[5,4,4,5,4],[4,4,3,4,4],[5,5,5,4,5]];state.items.forEach((x,i)=>{(scores[i]||scores[0]).forEach((v,j)=>rows.push([x.id,'Pertinencia','J-'+(j+1),v]))});download(csvEncode(rows),'EJEMPLO_SIMULADO_no_uso_real.csv')}
+function calcAiken(){try{let a=val('aikenValues').split(',').map(Number),lo=+val('aikenLow'),hi=+val('aikenHigh');if(!a.length||lo>=hi||a.some(x=>!Number.isInteger(x)||x<lo||x>hi))throw Error('Revisa la escala y las valoraciones');let v=a.reduce((s,x)=>s+x-lo,0)/(a.length*(hi-lo));$('#aikenOut').textContent='V = '+fmt(v)+' · '+a.length+' jueces · resultado descriptivo; interpretar con el diseño y la incertidumbre del panel.'}catch(e){toast(e.message)}}
+function calcLawshe(){let n=+val('lawN'),k=+val('lawK');if(!Number.isInteger(n)||!Number.isInteger(k)||n<1||k<0||k>n){toast('Datos inválidos');return}$('#lawOut').textContent='CVR = '+fmt(2*k/n-1)+' · '+k+' de '+n+' jueces consideran esencial el ítem. Compare con el valor crítico correspondiente al panel.'}
+function reportText(){
+ const note=state.reportNotes||'Interpretar cada coeficiente según número de expertos, escala, criterios previos y observaciones de los jueces.';
+ const lines=['LAB-VALIDEZ IA V1.0 | RED CTII.AI','INFORME DE VALIDEZ DEL INSTRUMENTO DE ENTREVISTA','Autor del software: Prof. Dr. Pablo José Guerrero, PhD.','Fecha: '+new Date().toLocaleDateString('es-BO'),'','1. IDENTIFICACIÓN DEL INSTRUMENTO','Archivos: '+(state.uploadedNames.join(' y ')||'Caso de demostración'),'Método: '+state.method,'', '2. PREGUNTAS E INDICADORES',...state.items.map(x=>`${x.id} — ${x.indicator}: ${x.question}`),'','3. RESULTADOS',...(!state.results.length?['Pendiente: no se han cargado dictámenes de expertos.']:state.results.map(x=>Object.entries(x).map(([k,v])=>k+': '+v).join(' | '))),'','4. INTERPRETACIÓN Y LIMITACIONES',note,'','5. REFERENCIA METODOLÓGICA','Sánchez Espejo, F. G. (2020). Estadística para tesis y uso del SPSS. Centrum Legalis.','','© 2026 Prof. Dr. Pablo José Guerrero, PhD. | RED CTII.AI'];
+ return lines;
+}
+function docxParagraphs(lines){
+ const {Paragraph,TextRun}=window.docx;return lines.map((line,i)=>new Paragraph({children:[new TextRun({text:line||' ',bold:i===0||/^\d\. /.test(line),color:i===0?'A91C26':undefined})],spacing:{after:140}}));
+}
+async function exportReport(format){
+ if($('#notes'))state.reportNotes=val('notes');
+ const lines=reportText();
+ try{
+  if(format==='docx'){
+   if(!window.docx)throw Error('No se cargó la biblioteca Word. Comprueba la conexión.');
+   const doc=new docx.Document({sections:[{properties:{},children:docxParagraphs(lines)}]});
+   const blob=await docx.Packer.toBlob(doc);downloadBlob(blob,'informe_validez.docx');
+  }else if(format==='pdf'){
+   if(!window.jspdf)throw Error('No se cargó la biblioteca PDF. Comprueba la conexión.');
+   const d=new jspdf.jsPDF({unit:'mm',format:'a4'});const width=182;let y=20;
+   lines.forEach((line,i)=>{
+    if(y>275){d.addPage();y=20}
+    d.setFont('helvetica',i===0||/^\d\. /.test(line)?'bold':'normal');d.setFontSize(i===0?15:10);
+    const wraps=d.splitTextToSize(line||' ',width);
+    wraps.forEach(x=>{if(y>275){d.addPage();y=20}d.text(x,14,y);y+=5.5});y+=1.5;
+   });d.save('informe_validez.pdf');
+  }else throw Error('Formato no disponible');
+  toast('Informe '+format.toUpperCase()+' descargado');
+ }catch(e){toast(e.message)}
+}
+function downloadBlob(blob,name){const a=document.createElement('a'),u=URL.createObjectURL(blob);a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),3000)}
+async function downloadFichaWord(){
+ if(!window.docx){toast('La biblioteca Word no se ha cargado');return}
+ try{
+ const {Paragraph,TextRun}=docx;
+ const lines=['RED CTII.AI | FICHA DE VALIDACIÓN POR JUICIO DE EXPERTOS','Investigación: _____________________________________','Experto: ____________________ Especialidad: ____________________','Fecha: __________','Escala: 1 (muy deficiente) a 5 (muy adecuado)',''];
+ state.items.forEach(x=>lines.push(x.id+' — '+x.indicator,x.question,'Claridad: ___  Pertinencia: ___  Relevancia: ___','Observaciones: ___________________________________',''));
+ lines.push('Suficiencia global: ____','Dictamen: __________________  Firma: ___________________','© 2026 Prof. Dr. Pablo José Guerrero, PhD. | RED CTII.AI');
+ const doc=new docx.Document({sections:[{properties:{},children:docxParagraphs(lines)}]});
+ downloadBlob(await docx.Packer.toBlob(doc),'ficha_validacion_expertos.docx');toast('Ficha DOCX descargada');
+ }catch(e){toast(e.message)}
+}
+function calcBinomial(){
+ let n=+val('binN'),k=+val('binK'),p=+val('binP');
+ if(!Number.isInteger(n)||!Number.isInteger(k)||n<1||n>1000||k<0||k>n||p<=0||p>=1){toast('Datos inválidos o más de 1000 jueces');return}
+ try{let d=binomialLocal(Array.from({length:n},(_,i)=>i<k?'sí':'no'),p);$('#binOut').textContent=`${d.favorables}/${d.total} favorables (${fmt(d.proporcion*100)}%). p unilateral exacto=${fmt(d.p_value)} bajo H₀: p=${p}.`;}catch(e){toast(e.message)}
+}
+function calcKappa(){
+ try{const a=val('kapA').split(','),b=val('kapB').split(','),d=kappaLocal(a,b);$('#kapOut').textContent=`Kappa = ${d.kappa} · acuerdo observado ${fmt(d.acuerdo_observado)} · acuerdo esperado ${fmt(d.acuerdo_azar)} · n=${d.unidades}.`;}catch(e){toast(e.message)}
+}
+init();</script></body></html>

@@ -1,0 +1,50 @@
+name: Publicar LAB-VALIDEZ IA (GitHub Pages)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener proyecto
+        uses: actions/checkout@v4
+      - name: Verificar interfaz del participante
+        run: |
+          test -s index.html
+          test -s assets/logo.png
+          node --check tests/browser_core.js
+          node tests/browser_core.js
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Construir sitio estático
+        run: |
+          mkdir -p _site/assets
+          cp index.html _site/index.html
+          cp assets/logo.png _site/assets/logo.png
+          touch _site/.nojekyll
+      - name: Subir sitio para publicación
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publicar portal
+        id: deployment
+        uses: actions/deploy-pages@v4

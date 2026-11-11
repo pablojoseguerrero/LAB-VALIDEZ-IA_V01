@@ -1,5 +1,21 @@
 # LAB-VALIDEZ IA V1.0 — RED CTII.AI
 
+## 🌐 INGRESAR AL LABORATORIO — MODO USUARIO
+
+**[▶ ABRIR LABORATORIO INTERACTIVO SIN INSTALAR PROGRAMAS](https://pablojoseguerrero.github.io/LAB-VALIDEZ-IA_V01/)**
+
+Este enlace inicia directamente la versión pública del laboratorio; el participante **no necesita Python**. La aplicación de GitHub Pages ejecuta los cálculos en el navegador. La carga de PDF, DOCX y XLSX requiere conexión a internet para cargar las bibliotecas de lectura (los archivos elegidos se procesan localmente; no se suben al servidor del proyecto).
+
+**Estado de la publicación:** si GitHub todavía muestra un error 404, el propietario debe activar **Settings → Pages → Source: GitHub Actions** y revisar el despliegue del flujo `Publicar LAB-VALIDEZ IA`. El sitio no debe darse por operativo antes de confirmar un despliegue exitoso.
+
+---
+
+## Modalidades del proyecto
+
+- **Modo usuario (index.html, assets/):** interfaz pública sin instalación, simuladores, carga local de documentos, revisión de ítems, validación de contenido, fichas, exportación CSV/DOCX/PDF mediante bibliotecas web.
+- **Modo avanzado (app.py, engine.py, static/):** servicio FastAPI opcional para procesamiento en servidor. No se requiere para los participantes del taller.
+
+
 Aplicación web funcional con 13 secciones de navegación, fundamentación y simulación de juicio de expertos, V de Aiken, Lawshe, prueba binomial y Kappa de Cohen; lectura de PDF/DOCX/TXT/CSV, revisión editable de ítems, fichas de validación, carga CSV de valoraciones reales, cálculo del lado del servidor y exportaciones CSV/DOCX/PDF.
 
 **Autor y titular de derechos:** © 2026 Prof. Dr. Pablo José Guerrero, PhD. RED CTII.AI. Todos los derechos reservados.
@@ -36,6 +52,6 @@ Referencia: Sánchez Espejo, F. G. (2020). *Estadística para tesis y uso del SP
 
 - **Código fuente:** https://github.com/pablojoseguerrero/LAB-VALIDEZ-IA_V01
 - **Citas académicas:** revisar [CITACION.md](CITACION.md) y la sección **13 · Cómo citar** de la interfaz (APA 7.ª, APA 6.ª, IEEE y Vancouver).
-- **Acceso público a la aplicación:** pendiente de despliegue externo del servidor FastAPI; GitHub Pages por sí solo no ejecuta el backend Python.
+- **Acceso público para los participantes:** https://pablojoseguerrero.github.io/LAB-VALIDEZ-IA_V01/ — versión autónoma de navegador. El backend FastAPI queda disponible como opción técnica avanzada.
 
 > **Repositorio independiente:** `pablojoseguerrero/LAB-VALIDEZ-IA_V01`. No corresponde al proyecto `PARV-LAB-GPT_V01`, que es exclusivo del taller de educación parvularia.
